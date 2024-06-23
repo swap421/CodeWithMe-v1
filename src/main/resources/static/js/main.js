@@ -16,7 +16,7 @@ let selectedUserId = null;
 function connect(event) {
     gmailId = document.querySelector('#my-gmailId').textContent.trim();
     if (gmailId) {
-        const socket = new SockJS('/ws');
+        const socket = new SockJS('https://codewithme-v1-production.up.railway.app/ws');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, onConnected, onError);
     }
