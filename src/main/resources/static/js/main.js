@@ -16,7 +16,7 @@ let selectedUserId = null;
 function connect(event) {
     gmailId = document.querySelector('#my-gmailId').textContent.trim();
     if (gmailId) {
-        const socket = new SockJS('https://codewithme-v1-production.up.railway.app/ws');
+        const socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, onConnected, onError);
     }
@@ -128,8 +128,9 @@ async function fetchAndDisplayUserChat() {
 
 
 function onError() {
-    connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
-    connectingElement.style.color = 'red';
+    console.log('Could not connect to WebSocket server. Please refresh this page to try again!')
+//    connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
+//    connectingElement.style.color = 'red';
 }
 
 
