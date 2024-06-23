@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CWM | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+<body id="my-details">
+<div th:insert="fragments/navbar :: nav"></div>
+
+<!-- Main body -->
+<div class="container flex justify-center items-center h-screen" id="details-container">
+    <div class="left-container">
+        <div class="card m-2 border-2 border-gray-800 rounded w-80 h-80">
+            <div class="card-header bg-gray-800 text-white h-10 flex justify-center items-center">
+                <h2 class="mb-0">LeetCode</h2>
+            </div>
+            <div th:if="${totalQuestions != '0'}" class="card-body p-4 text-gray-800 text-lg">
+                <div class="field-solved flex flex-row justify-between mb-2">
+                    <div class="field-label">Solved</div>
+                    <div class="field-value" id="leetcode-solved" th:text="${totalSolved} + '/' + ${totalQuestions}"></div>
+                </div>
+                <div class="field-easy flex flex-row justify-between mb-2">
+                    <div class="field-label">Easy</div>
+                    <div class="field-value" id="leetcode-easy" th:text="${easySolved} + '/' + ${totalEasy}"></div>
+                </div>
+                <div class="field-medium flex flex-row justify-between mb-2">
+                    <div class="field-label">Medium</div>
+                    <div class="field-value" id="leetcode-medium" th:text="${mediumSolved} + '/' + ${totalMedium}"></div>
+                </div>
+                <div class="field-hard flex flex-row justify-between mb-2">
+                    <div class="field-label">Hard</div>
+                    <div class="field-value" id="leetcode-hard" th:text="${hardSolved} + '/' + ${totalHard}"></div>
+                </div>
+                <div class="field-rank flex flex-row justify-between mb-2">
+                    <div class="field-label">Rank</div>
+                    <div class="field-value" id="leetcode-rank" th:text="${ranking}"></div>
+                </div>
+            </div>
+            <div th:if="${totalQuestions == '0'}" class="card-body p-4 text-gray-800 text-lg">
+                <img src="/img/no-data.png" class="no-data-img"></img>
+            </div>
+        </div>
+
+        <!-- Codeforces Details -->
+        <div class="card card border-2 border-gray-800 rounded w-80 h-80 flex flex-col">
+            <div class="card-header card-header bg-gray-800 text-white h-10 flex justify-center items-center">
+                <h2 class="mb-0">Codeforces</h2>
+            </div>
+            <div th:if="${rating != null}" class="card-body p-4 text-gray-800 text-lg">
+                <div class="field-rating flex flex-row justify-between mb-2">
+                    <div class="field-label">Rating</div>
+                    <div class="field-value" id="codeforces-rating" th:text="${rating}"></div>
+                </div>
+                <div class="field-max-rating flex flex-row justify-between mb-2">
+                    <div class="field-label">Max Rating</div>
+                    <div class="field-value" id="codeforces-max-rating" th:text="${maxRating}"></div>
+                </div>
+                <div class="field-c-rank flex flex-row justify-between mb-2">
+                    <div class="field-label">Rank</div>
+                    <div class="field-value" id="codeforces-rank" th:text="${rank}"></div>
+                </div>
+                <div class="field-max-rank flex flex-row justify-between mb-2">
+                    <div class="field-label">MaxRank</div>
+                    <div class="field-value" id="codeforces-max-rank" th:text="${maxRank}"></div>
+                </div>
+                <div class="field-contribution flex flex-row justify-between mb-2">
+                    <div class="field-label">Contribution</div>
+                    <div class="field-value" id="codeforces-contribution" th:text="${contribution}"></div>
+                </div>
+            </div>
+            <div th:if="${rating == null}" class="card-body p-4 text-gray-800 text-lg">
+                <img src="/img/no-data.png" class="no-data-img"></img>
+            </div>
+        </div>
+    </div>
+    <div class="right-container">
+        <div class="chat-container" id="chat-page">
+            <div class="users-list">
+                <div class="users-list-container">
+                    <div class="card-header">
+                        <h2 class="mb-0" id = "my-gmailId" th:text="${gmailId}"></h2>
+                        <h2 class="mb-0" id = "box-title">User List</h2>
+                    </div>
+                    <ul id="connectedUsers">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chat-area-box chat-area">
+                <div class="chat-area" id="chat-messages">
+                </div>
+
+                <form id="messageForm" name="messageForm" class="hidden">
+                    <div class="message-input">
+                        <input autocomplete="off" type="text" id="message" placeholder="Type your message...">
+                        <button>Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2024 Coding Partners. All rights reserved.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script th:src="@{../js/common.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

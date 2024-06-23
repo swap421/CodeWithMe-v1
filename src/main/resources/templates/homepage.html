@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CWM | Enter Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/output.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 py-2">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex-shrink-0">
+                <span class="text-white text-3xl font-bold">CodeWithMe</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="flex justify-center items-center h-screen" id = "username-page">
+    <div class="card border border-gray-800 p-8  rounded">
+        <div class="card-header h-7 hidden">
+            <h2 class="mb-0" id = "my-gmailId" th:text="${gmailId}"></h2>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/submit}" method="post" id = "usernameForm" autocomplete="off">
+                <div class="form-group w-80 m-3 mb-7">
+                    <input type="text" class="form-control rounded border border-gray-800 w-80 p-2" id="leetcodeUsername" name="leetcodeUsername" placeholder="Enter Your LeetCode Username">
+                </div>
+                <div class="form-group w-80 m-3 mb-7">
+                    <input type="text" class="form-control rounded border border-gray-800 w-80 p-2" id="codeforcesUsername" name="codeforcesUsername" placeholder="Enter Your Codeforces Username">
+                </div>
+                <div class="form-group w-80 m-3 flex justify-center">
+                    <button type="submit" class="btn text-gray-500 rounded-sm border border-gray-800 p-1 px-3 hover:bg-gray-800 hover:text-white transition duration-500 ease-in-out">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer class="bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2024 Coding Partners. All rights reserved.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

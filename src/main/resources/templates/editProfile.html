@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CWM | User Profile Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script th:src="@{../js/common.js}"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+<body id="user-edit-form">
+<div th:insert="fragments/navbar :: nav"></div>
+<div class="container mt-5 h-screen">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">User Profile Form</h2>
+                    <form th:action="@{/save-profile}" autocomplete="off" id = "edit-profile" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username" th:value="${username}">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio:</label>
+                            <textarea class="form-control" id="bio" name="bio" th:text="${bio}"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="profileImage">Profile Image:</label>
+                            <input type="file" class="form-control-file" id="profileImage" name="profileImage" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="leetcodeUsername">LeetCode Username:</label>
+                            <input type="text" class="form-control" id="leetcodeUsername" name="leetcodeUsername" th:value="${leetcodeUsername}">
+                        </div>
+                        <div class="form-group">
+                            <label for="codeforceUsername">Codeforces Username:</label>
+                            <input type="text" class="form-control" id="codeforceUsername" name="codeforceUsername" th:value="${codeforcesUsername}">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2024 Coding Partners. All rights reserved.</p>
+</footer>
+</body>
+</html>

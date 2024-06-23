@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CWM | Pending Request</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/output.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script th:src="@{../js/common.js}"></script>
+</head>
+<body id = "pending-request">
+<div th:insert="fragments/navbar :: nav"></div>
+<div class="flex items-center h-screen flex-col">
+    <div th:each="rating : ${ratings}" class="rating-item flex w-1/2">
+        <img th:if="${rating.user.profileImage != null}" th:src="'data:image/png;base64,' + ${rating.user.profileImage}" alt="Profile Image" class="profile-image m-3"/>
+        <img th:if="${rating.user.profileImage == null}" src="/img/user_icon.png" alt="Profile Image" class="profile-image m-3"/>
+        <div class="rating-details flex-grow">
+            <p><strong></strong> <span th:text="${rating.user.username}"></span></p>
+            <p><strong></strong> <span th:text="${rating.user.bio}"></span></p>
+            <p><strong></strong> <span>Codeforces Rating: </span><span class="cf-rating" th:text="${rating.rating}"></span></p>
+            <p><strong></strong> <span>Leetcode Rank: </span><span class="lc-ranking" th:text="${rating.ranking}"></span></p>
+        </div>
+        <div class="accept-request">
+            <p><strong><button class="hover:transition duration-500 ease-in-out" th:attr="data-user-id=${rating.user.id}">Accept Request</button></strong></p>
+            <p><strong><img src="/img/white-tick.png" alt="tick-mark" class="tick-mark hide"></strong></p>
+        </div>
+    </div>
+</div>
+<footer class="bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2024 Coding Partners. All rights reserved.</p>
+</footer>
+</body>
+</html>
