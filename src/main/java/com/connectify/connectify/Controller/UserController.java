@@ -13,7 +13,6 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,7 +43,8 @@ public class UserController {
         if (user == null) {
             User newUser = userService.createNewUser(authorizedClient,leetcodeUsername,codeforcesUsername);
             userService.saveUserToDB(newUser);
-            UserDao userDao = userDaoService.findByGmailId(newUser.getGmailId());
+            UserDao userDao = new UserDao();
+            userDao.setGmailId(newUser.getGmailId());
             userDao.setUsername(newUser.getUsername());
             userDaoService.saveUser(userDao);
 

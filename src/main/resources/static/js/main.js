@@ -23,11 +23,12 @@ function connect(event) {
 }
 function onConnected() {
     stompClient.subscribe(`/user/public`, onGettingResponse);
+    // Note: Adding chat user from /submit post request in backend
     // register the connected user
-    stompClient.send("/app/user.addUser",
-        {},
-        JSON.stringify({gmailId: gmailId, status: 'ONLINE'})
-    );
+    //    stompClient.send("/app/user.addUser",
+    //        {},
+    //        JSON.stringify({gmailId: gmailId, status: 'ONLINE'})
+    //    );
 }
 function onGettingResponse(){
     console.log("User is Online");
@@ -136,7 +137,6 @@ function onError() {
 
 function sendMessage(event) {
     const messageContent = messageInput.value.trim();
-    console.log(messageContent);
     if (messageContent && stompClient) {
         const chatMessage = {
             senderId: gmailId,
@@ -169,9 +169,7 @@ async function onMessageReceived(payload) {
     }
 
     const notifiedUser = document.querySelector(`#user-${message.senderId}`);
-    console.log(notifiedUser);
     if (notifiedUser && !notifiedUser.classList.contains('active')) {
-        console.log("inside");
         const nbrMsg = notifiedUser.querySelector('.nbr-msg');
         nbrMsg.classList.remove('hidden');
         nbrMsg.textContent = '';
