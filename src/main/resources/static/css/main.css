@@ -10,7 +10,7 @@
         align-items: center;
         justify-content: center;
         .card-body{
-            color: #cdebff;
+            color: rgb(31 41 55 / var(--tw-text-opacity));
         }
     }
     .right-container{
@@ -27,7 +27,7 @@
         min-height: 600px;
         max-height: 600px;
         margin: 60px auto;
-        border: 1px solid #ccc;
+        border: 1px solid rgb(31 41 55);
         background-color: #fff;
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -36,12 +36,11 @@
 
     .users-list {
         flex: 1;
-        border-right: 1px solid #ccc;
+        border-right: 1px solid rgb(31 41 55);
         min-width: 300px;
         padding: 20px;
         box-sizing: border-box;
-        background-color: rgb(55, 65, 81);
-        color: #fff;
+        color: rgb(31 41 55);
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
         display: flex;
@@ -108,7 +107,6 @@
         box-sizing: border-box;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
-        background-color: rgb(55, 65, 81);
     }
 
     .message {
@@ -130,7 +128,7 @@
 
     .user-item span.nbr-msg {
         margin-left: 10px;
-        background-color: lightgreen;
+        background-color: rgb(31 41 55);
         color: white;
         padding: 5px;
         width: 10px;
@@ -224,7 +222,6 @@
     display: none;
 }
 body{
-    background-color: rgb(55, 65, 81);
     font-weight: 300;
 }
 #user-edit-form{
@@ -239,19 +236,13 @@ body{
             text-decoration: unset;
         }
     }
-    .card{
-        background-color: rgb(55, 65, 81);
-        border: 1px solid #fff;
-        color: #fff;
+    .edit-container{
+        border: 1px solid rgb(55, 65, 81);
+        border-radius: 5px;
     }
-    .form-group{
-        input, textarea{
-            background-color: rgb(31, 41, 55);
-            color: #fff;
-        }
-        input#profileImage{
-            background-color: unset;
-        }
+    .card{
+        border: 1px solid #fff;
+        color: rgb(55, 65, 81);
     }
     button{
         background-color: rgb(55, 65, 81);
@@ -261,17 +252,6 @@ body{
     }
     button:hover{
         background-color: rgb(31, 41, 55);
-    }
-}
-#username-page{
-    .form-group{
-        input{
-            background-color: rgb(31, 41, 55);
-            color: #fff;
-        }
-        button{
-            color: #fff;
-        }
     }
 }
 #navbarNav{
@@ -285,10 +265,10 @@ body{
 }
 #find-partner{
     .cf-rating, .lc-ranking{
-        color: #cdebff;
+        color: green;
     }
     .rating-details{
-        color: #fff;
+        color: rgb(31 41 55);
         font-weight: 300;
     }
     .rating-item{
@@ -305,6 +285,8 @@ body{
         }
     }
     .send-request{
+        margin: 2% 0 0 4%;
+        width: 25%;
         button{
             background-color: rgb(55, 65, 81);
             color: #fff;
@@ -320,10 +302,10 @@ body{
 }
 #pending-request{
     .cf-rating, .lc-ranking{
-        color: #cdebff;
+        color: green;
     }
     .rating-details{
-            color: #fff;
+            color: rgb(31 41 55);
             font-weight: 300;
     }
     .rating-item{
@@ -340,6 +322,8 @@ body{
         }
     }
     .accept-request{
+        margin: 2% 0 0 4%;
+        width: 25%;
         button{
             background-color: rgb(55, 65, 81);
             color: #fff;
@@ -358,6 +342,27 @@ body{
 }
 #enable-chatbox{
     display: none;
+}
+#error-page{
+    .error-details{
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        .error-div{
+            padding: 15% 10px;
+            align-self: start;
+            h1{
+                font-size: 50px;
+            }
+            p{
+                font-size: 30px;
+            }
+            a{
+                font-size: 20px;
+            }
+        }
+    }
 }
 /*sp mode css*/
 @media only screen and (max-width: 768px){
@@ -419,6 +424,21 @@ body{
             }
         }
     }
+    #error-page{
+        .error-details{
+            .error-div{
+                h1{
+                    font-size: 30px;
+                }
+                p{
+                    font-size: 20px;
+                }
+                a{
+                    font-size: 15px;
+                }
+            }
+        }
+    }
     #pending-request, #find-partner{
         .rating-item{
             width: 90%;
@@ -434,6 +454,9 @@ body{
         }
     }
     #user-edit-form{
+        .container > .row{
+            padding: 10px;
+        }
         #edit-profile{
             button{
                 width: 30%;

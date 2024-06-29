@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/output.css">
+</head>
+<body id = "error-page">
+<div th:insert="fragments/navbar :: nav"></div>
+<div class="error-details">
+    <div class="error-div">
+        <h1>Something went wrong!</h1>
+        <p th:text="${message}">An error occurred while processing your request.</p>
+        <a href="/">Go Home</a>
+    </div>
+</div>
+<footer class="bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2024 Coding Partners. All rights reserved.</p>
+</footer>
+<script th:src="@{../js/common.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
