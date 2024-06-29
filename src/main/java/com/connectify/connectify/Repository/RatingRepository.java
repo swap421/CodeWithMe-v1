@@ -18,9 +18,9 @@ public interface RatingRepository extends JpaRepository<Rating,Long> {
     @Query("SELECT r2 " +
             "FROM Rating r1 " +
             "JOIN Rating r2 " +
-            "ON ((r1.ranking - r2.ranking BETWEEN 0 AND 20000 " +
+            "ON ((ABS(r1.ranking - r2.ranking) BETWEEN 0 AND 40000 " +
             "AND r1.ranking <> 0 AND r2.ranking <> 0) " +
-            "OR (r2.rating - r1.rating BETWEEN 0 AND 300 " +
+            "OR (ABS(r2.rating - r1.rating) BETWEEN 0 AND 500 " +
             "AND r1.rating <> 0 AND r2.rating <> 0)) " +
             "WHERE r1.user.id <> r2.user.id AND r1.user.id = :currentUserId " +
             "AND r2.user.id NOT IN (SELECT cr.fromUser.id from ConnectionRequest cr " +
